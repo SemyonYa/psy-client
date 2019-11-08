@@ -10,7 +10,6 @@ export class HomePage implements OnInit {
   menu: Set<IMenuItem> = new Set<IMenuItem>();
   constructor() {
     console.log('HomePage');
-
   }
 
   ngOnInit() {

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  host: 'http://apijs.inijini.ru'
+  host: 'http://apijs.injini.ru'
 };
 
 /*

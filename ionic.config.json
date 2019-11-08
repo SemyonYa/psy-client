@@ -1,5 +1,7 @@
 {
   "name": "psy-client",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

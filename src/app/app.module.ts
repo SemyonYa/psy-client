@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomePageModule } from './home/home.module';
+import { CompanyPageModule } from './company/company.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +22,8 @@ import { HomePageModule } from './home/home.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    HomePageModule
+    HomePageModule,
+    CompanyPageModule
   ],
   providers: [
     StatusBar,

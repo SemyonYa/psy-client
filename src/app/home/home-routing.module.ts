@@ -2,15 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { HomePage } from './home.page';
-import { SpecsComponent } from './children/specs/specs.component';
-import { SupportComponent } from './children/support/support.component';
+import { AboutComponent } from './children/about/about.component';
+import { StartComponent } from './children/start/start.component';
+
 
 const homeRoutes: Routes = [
   {
     path: 'home', component: HomePage,
     children: [
-      { path: 'specs', component: SpecsComponent },
-      { path: 'support', component: SupportComponent }
+      { path: '', component: StartComponent },
+      { path: 'about', component: AboutComponent },
     ]
   }
 ];
