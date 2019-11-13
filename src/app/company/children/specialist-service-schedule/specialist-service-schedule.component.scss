@@ -1,0 +1,26 @@
+.calendar {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 10px 0;
+
+    .date {
+        width: 14%;
+        border: solid 1px transparent;
+        margin: 3px 0;
+        cursor: pointer;
+
+        &.space {
+            border-color: transparent;
+            cursor: auto;
+        }
+
+        &.busy {
+            font-weight: 600;
+            color: var(--ion-color-primary);
+        }
+        &.today {
+            border-color: var(--ion-color-primary);
+        }
+    }
+}

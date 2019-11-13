@@ -1,5 +1,5 @@
 <ion-content>
-  <ion-item *ngFor="let company of companies" [routerLink]="['/company/' + company.id]">
+  <ion-item *ngFor="let company of companies" [routerLink]="[company.id, 'specialist']">
     <ion-avatar slot="start" >
       <img src="/assets/icon/pricetag.svg">
     </ion-avatar>

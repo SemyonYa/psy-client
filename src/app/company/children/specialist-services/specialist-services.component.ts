@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { Good } from 'src/app/_models/good';
 import { DataService } from 'src/app/_services/data.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Specialist } from 'src/app/_models/specialist';
 
 @Component({
-  selector: 'app-specialist',
-  templateUrl: './specialist.component.html',
-  styleUrls: ['./specialist.component.scss'],
+  selector: 'app-specialist-services',
+  templateUrl: './specialist-services.component.html',
+  styleUrls: ['./specialist-services.component.scss'],
 })
-export class SpecialistComponent implements OnInit {
-  specialist: Specialist;
+export class SpecialistServicesComponent implements OnInit {
   specialistId: number;
+  goods: Good[] = [];
   constructor(private dataService: DataService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.specialistId = this.activatedRoute.snapshot.params.specialistId;
-    this.dataService.getSpecialist(this.specialistId)
+    this.dataService.getGoods(this.specialistId)
       .subscribe(
-        (s: Specialist) => {
-          this.specialist = s;
+        (data: Good[]) => {
+          this.goods = data;
         }
       );
   }

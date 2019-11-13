@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IMenuItem } from '../models/menu-item';
+import { IMenuItem } from '../_models/menu-item';
 
 @Component({
   selector: 'app-home',

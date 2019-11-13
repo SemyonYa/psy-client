@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -11,12 +11,16 @@ import { CompanyListComponent } from './children/company-list/company-list.compo
 import { SpecialistComponent } from './children/specialist/specialist.component';
 import { CompanySpecialistsComponent } from './children/company-specialists/company-specialists.component';
 import { ScheduleComponent } from './children/schedule/schedule.component';
+import { SpecialistServicesComponent } from './children/specialist-services/specialist-services.component';
+import { SpecialistServiceScheduleComponent } from './children/specialist-service-schedule/specialist-service-schedule.component';
+import { BookingModalComponent } from './children/booking-modal/booking-modal.component';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
+    // FormsModule,
+    ReactiveFormsModule,
     IonicModule,
     CompanyRoutingModule
   ],
@@ -26,7 +30,13 @@ import { ScheduleComponent } from './children/schedule/schedule.component';
     CompanyListComponent,
     SpecialistComponent,
     CompanySpecialistsComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    SpecialistServicesComponent,
+    SpecialistServiceScheduleComponent,
+    BookingModalComponent
+  ],
+  entryComponents: [
+    BookingModalComponent
   ]
 })
 export class CompanyPageModule {}

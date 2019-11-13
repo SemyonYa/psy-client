@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map, catchError } from 'rxjs/operators';
-import { Specialist } from '../models/specialist';
+import { Specialist } from '../_models/specialist';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
-import { Company } from '../models/company';
+import { Company } from '../_models/company';
+import { Good } from '../_models/good';
+import { Seance } from '../_models/seance';
 
 @Injectable({
   providedIn: 'root'
@@ -87,11 +89,62 @@ export class DataService {
       );
   }
 
+  getGoods(specialistId) {
+    return this.http.get(environment.host + '/client/goods?spec_id=' + specialistId)
+      .pipe(
+        map(
+          (data: any[]) => data.map(g => new Good(g.id, g.name, g.description, g.price, g.duration, g.specialist_id, g.invisible))
+        )
+      );
+  }
+
+  getGood(id) {
+    return this.http.get(environment.host + '/client/good?id=' + id)
+      .pipe(
+        map(
+          (g: any) => new Good(g.id, g.name, g.description, g.price, g.duration, g.specialist_id, g.invisible)
+        )
+      );
+  }
+
   getWorkdays(specialistId: number, y: number, m: number) {
     return this.http.get(environment.host + '/client/workdays?spec_id=' + specialistId + '&year=' + y + '&month=' + m);
   }
 
+  getGoodWorkdays(goodId: number, y: number, m: number) {
+    return this.http.get(environment.host + '/client/good-workdays?good_id=' + goodId + '&year=' + y + '&month=' + m);
+  }
+
   getSeances(specialistId: number, date: string) {
-    return this.http.get(environment.host + '/client/seances?spec_id=' + specialistId + '&date=' + date);
+    return this.http.get(environment.host + '/client/seances?spec_id=' + specialistId + '&date=' + date)
+      .pipe(
+        map(
+          (data: any[]) => data.map(s => new Seance(s.id, s.date, s.time, s.duration, s.price, s.status, s.good_id))
+        )
+      );
+  }
+
+  getGoodSeances(goodId: number, date: string) {
+    return this.http.get(environment.host + '/client/good-seances?good_id=' + goodId + '&date=' + date)
+      .pipe(
+        map(
+          (data: any[]) => data.map(s => new Seance(s.id, s.date, s.time, s.duration, s.price, s.status, s.good_id))
+        )
+      );
+  }
+
+  getSeance(id: number) {
+    return this.http.get(environment.host + '/client/seance?id=' + id)
+      .pipe(
+        map(
+          (s: any) => {
+            return new Seance(s.id, s.date, s.time, s.duration, s.price, s.status, s.good_id, s.name);
+          }
+        )
+      );
+  }
+
+  booking(formData: any) {
+    return this.http.post(environment.host + '/client/booking', formData);
   }
 }

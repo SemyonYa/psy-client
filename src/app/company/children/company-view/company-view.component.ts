@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DataService } from 'src/app/services/data.service';
-import { Company } from 'src/app/models/company';
-import { Specialist } from 'src/app/models/specialist';
+import { DataService } from 'src/app/_services/data.service';
+import { Company } from 'src/app/_models/company';
+import { Specialist } from 'src/app/_models/specialist';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -17,12 +17,11 @@ export class CompanyViewComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
-    this.id = this.activatedRoute.snapshot.params.cId;
+    this.id = this.activatedRoute.snapshot.params.companyId;
     this.dataService.getCompany(this.id)
       .subscribe(
         (c: Company) => {
           this.company = c;
-
         }
       );
   }

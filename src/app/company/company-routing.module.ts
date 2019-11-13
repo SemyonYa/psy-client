@@ -7,6 +7,8 @@ import { CompanyViewComponent } from './children/company-view/company-view.compo
 import { SpecialistComponent } from './children/specialist/specialist.component';
 import { CompanySpecialistsComponent } from './children/company-specialists/company-specialists.component';
 import { ScheduleComponent } from './children/schedule/schedule.component';
+import { SpecialistServicesComponent } from './children/specialist-services/specialist-services.component';
+import { SpecialistServiceScheduleComponent } from './children/specialist-service-schedule/specialist-service-schedule.component';
 
 
 const companyRoutes: Routes = [
@@ -15,11 +17,18 @@ const companyRoutes: Routes = [
     children: [
       { path: '', component: CompanyListComponent, pathMatch: 'full' },
       {
-        path: ':cId', component: CompanyViewComponent,
+        path: ':companyId', component: CompanyViewComponent,
         children: [
-          { path: '', component: CompanySpecialistsComponent, pathMatch: 'full' },
-          { path: ':sId', component: SpecialistComponent },
-          { path: ':sId/:date', component: ScheduleComponent }
+          { path: 'specialist', component: CompanySpecialistsComponent },
+          {
+            path: 'specialist/:specialistId', component: SpecialistComponent,
+            children: [
+              { path: '', component: SpecialistServicesComponent, pathMatch: 'full' },
+              { path: ':goodId', component: SpecialistServiceScheduleComponent },
+              { path: ':goodId/:date', component: ScheduleComponent }
+
+            ]
+          },
         ]
       },
       // { path: ':cId/:sId', component: SpecialistComponent }
