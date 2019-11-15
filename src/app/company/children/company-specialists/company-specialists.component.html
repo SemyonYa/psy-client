@@ -1,11 +1,13 @@
 <ion-content>
-    <ion-list *ngIf="specialists;else loading">
-      <ion-item *ngFor="let spec of specialists" [routerLink]="[spec.id]">
-        <ion-label>
-          <h2>{{spec.name}}</h2>
-          <h3>{{spec.description}}</h3>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-    <ng-template #loading>Загрузка...</ng-template>
-  </ion-content>
+  <ion-list *ngIf="specialists;else loading">
+    <ion-item *ngFor="let spec of specialists" [routerLink]="[spec.id]">
+      <ion-label>
+        <h2>{{spec.name}}</h2>
+        <h3>{{spec.description}}</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ng-template #loading>
+  <ion-progress-bar color="primary" type="indeterminate"></ion-progress-bar>
+</ng-template>

@@ -4,7 +4,9 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title *ngIf="specialist;else loading">{{specialist.name}}</ion-title>
-    <ng-template #loading>Загрузка...</ng-template>
+    <ng-template #loading>
+      <ion-icon color="light" name="timer"></ion-icon>
+    </ng-template>
   </ion-toolbar>
 </ion-header>
 <ion-content>

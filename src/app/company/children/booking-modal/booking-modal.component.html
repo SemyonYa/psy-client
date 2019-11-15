@@ -1,6 +1,8 @@
 <ion-header>
   <ion-toolbar color="tertiary">
-    <ion-title>Booking of seance #{{seanceId}}</ion-title>
+    <ion-title>
+      {{seance?.goodName + ' - ' + (seance?.time.hours | number:'2.0-0') + ':' + (seance?.time.minutes | number:'2.0-0')}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -17,25 +19,34 @@
     <ion-item>
       <ion-label position="stacked">Ваш телефон (для отправки уведомлений и подтверждений)</ion-label>
       <div [ngStyle]="{display: 'flex'}">
-        <ion-input type="text" text-center readonly [ngStyle]="{flexBasis: '10%', color: '#999', fontWeight: 600}"> +7 </ion-input>
-        <ion-input formControlName="clientPhone" type="tel" [ngStyle]="{flexBasis: '90%'}" clearInput="true" maxlength="10"></ion-input>
+        <ion-input type="text" text-center readonly [ngStyle]="{flexBasis: '10%', color: '#999', fontWeight: 600}"> +7
+        </ion-input>
+        <ion-input formControlName="clientPhone" type="tel" [ngStyle]="{flexBasis: '90%'}" clearInput="true"
+          maxlength="10"></ion-input>
       </div>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Пожелания</ion-label>
       <ion-textarea formControlName="clientWish" clearInput="true" maxlength="500"></ion-textarea>
     </ion-item>
+    <div
+      *ngIf="(form.get('clientName').errors && form.get('clientName').touched) || (form.get('clientPhone').errors && form.get('clientPhone').touched) || (form.get('clientEmail').errors && form.get('clientEmail').touched)"
+      class="alert" [ngStyle]="{margin: '10px'}">
+      <p *ngIf="form.get('clientName').errors && form.get('clientName').touched">Некорректное имя</p>
+      <p *ngIf="form.get('clientPhone').errors && form.get('clientPhone').touched">Некорректный телефон</p>
+      <p *ngIf="form.get('clientEmail').errors && form.get('clientEmail').touched">Некорректный E-mail</p>
+    </div>
     <ion-toolbar>
       <ion-buttons slot="end">
-        <ion-button color="primary" type="submit">
+        <ion-button color="tertiary" fill="solid" type="submit" [disabled]="form.invalid">
           <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
           Подтвердить
         </ion-button>
       </ion-buttons>
     </ion-toolbar>
-    <!-- <ion-button color="tertiary">  </ion-button> -->
   </form>
-  <!-- <pre>{{seance | json}}</pre> -->
 </ion-content>
 
-<ng-template #loading>Загрузка...</ng-template>
+<ng-template #loading>
+  <ion-progress-bar color="primary" type="indeterminate"></ion-progress-bar>
+</ng-template>

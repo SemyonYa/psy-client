@@ -144,6 +144,10 @@ export class DataService {
       );
   }
 
+  sendCode() {
+    return true;
+  }
+
   booking(formData: any) {
     return this.http.post(environment.host + '/client/booking', formData);
   }

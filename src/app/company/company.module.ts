@@ -14,6 +14,7 @@ import { ScheduleComponent } from './children/schedule/schedule.component';
 import { SpecialistServicesComponent } from './children/specialist-services/specialist-services.component';
 import { SpecialistServiceScheduleComponent } from './children/specialist-service-schedule/specialist-service-schedule.component';
 import { BookingModalComponent } from './children/booking-modal/booking-modal.component';
+import { SecondFactorModalComponent } from './children/second-factor-modal/second-factor.component';
 
 
 @NgModule({
@@ -33,10 +34,12 @@ import { BookingModalComponent } from './children/booking-modal/booking-modal.co
     ScheduleComponent,
     SpecialistServicesComponent,
     SpecialistServiceScheduleComponent,
-    BookingModalComponent
+    BookingModalComponent,
+    SecondFactorModalComponent
   ],
   entryComponents: [
-    BookingModalComponent
+    BookingModalComponent,
+    SecondFactorModalComponent
   ]
 })
 export class CompanyPageModule {}

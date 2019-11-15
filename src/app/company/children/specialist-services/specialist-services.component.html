@@ -1,5 +1,12 @@
-<div>
-  <p *ngFor="let good of goods" [routerLink]="[ good.id ]">
-    {{good.name}}
-  </p>
-</div>
+<ion-content *ngIf="goods;else loading">
+  <ion-item *ngFor="let good of goods" [routerLink]="[ good.id ]">
+    <ion-avatar slot="start">
+      <ion-icon name="cube" size="large"></ion-icon>
+    </ion-avatar>
+    <ion-label>{{good.name}}</ion-label>
+  </ion-item>
+</ion-content>
+
+<ng-template #loading>
+  <ion-progress-bar color="secondary" type="indeterminate"></ion-progress-bar>
+</ng-template>

@@ -3,7 +3,10 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title *ngIf="company">{{company.name}}</ion-title>
+    <ion-title *ngIf="company; else loading">{{company.name}}</ion-title>
+    <ng-template #loading>
+      <ion-icon color="light" name="timer"></ion-icon>
+    </ng-template>
   </ion-toolbar>
 </ion-header>
 <ion-content>

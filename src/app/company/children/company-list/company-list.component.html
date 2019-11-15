@@ -1,8 +1,12 @@
-<ion-content>
+<ion-content *ngIf="companies;else loading">
   <ion-item *ngFor="let company of companies" [routerLink]="[company.id, 'specialist']">
-    <ion-avatar slot="start" >
+    <ion-avatar slot="start">
       <img src="/assets/icon/pricetag.svg">
     </ion-avatar>
     <ion-label>{{company.name}}</ion-label>
   </ion-item>
 </ion-content>
+
+<ng-template #loading>
+  <ion-progress-bar color="primary" type="indeterminate"></ion-progress-bar>
+</ng-template>

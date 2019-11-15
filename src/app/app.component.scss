@@ -1,6 +1,29 @@
 * {
     outline: none;
 }
-body {
-    font-family: 'Exo 2', sans-serif; 
+:root {
+    /**  CUSTOM  **/
+    // --ion-font-family: 'Exo 2', sans-serif;
+    // --ion-font-family: 'Lobster Two', cursive;
+    // --ion-font-family: 'Philosopher', sans-serif;
+    // --ion-font-family: 'Didact Gothic', sans-serif;
+    // --ion-font-family: 'Anonymous Pro', monospace;
+    --ion-font-family: 'Kurale', serif;
+}
+
+.alert-success-booking-window {
+    text-align: center;
+
+    .alert-head {
+        text-align: center;
+        border-bottom: solid 1px rgba(var(--ion-color-primary-rgb), 0.5);
+        // box-shadow: 0 1px 5px 0px rgba(var(--ion-color-primary-rgb), 0.5);
+    }
+
+    .alert-message.sc-ion-alert-md {
+        max-height: unset;
+        border-bottom: solid 1px rgba(var(--ion-color-primary-rgb), 0.5);
+    }
+
+    .alert-button-group {}
 }

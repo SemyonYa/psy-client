@@ -6,20 +6,25 @@
     <ion-title *ngIf="good;else loading">{{good?.name}} ({{date | date:'dd.MM.yyyy'}})</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content *ngIf="seances;else loading2">
   <div [ngStyle]="{display: 'flex'}">
-    <ion-card color="tertiary" *ngFor="let seance of (seances | async)" [ngClass]="{'card': true}" text-center
+    <ion-card *ngFor="let seance of (seances | async)" [ngClass]="{'card': true}" text-center
       (click)="booking(seance.id)">
       <ion-card-header>
         <ion-card-title>{{seance.time.hours + ':'}}{{seance.time.minutes | number:'2.0-0'}}</ion-card-title>
         <ion-card-subtitle>{{seance.price | number:'2.2-2'}}&#8381;</ion-card-subtitle>
         <ion-card-subtitle>{{seance.duration}} минут</ion-card-subtitle>
       </ion-card-header>
-      <!-- <ion-card-content>
-
-      </ion-card-content> -->
+      <!-- <ion-card-content></ion-card-content> -->
     </ion-card>
   </div>
 
-  <ng-template #loading>Загрузка...</ng-template>
 </ion-content>
+<ng-template #loading>
+  <ion-icon color="light" name="timer"></ion-icon>
+</ng-template>
+<ng-template #loading2>
+  <div [ngStyle]="{height: '100%'}">
+    <ion-progress-bar color="tertiary" type="indeterminate"></ion-progress-bar>
+  </div>
+</ng-template>
