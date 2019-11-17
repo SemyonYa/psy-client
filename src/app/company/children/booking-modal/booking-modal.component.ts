@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from 'src/app/_services/data.service';
 import { FormGroup } from '@angular/forms';
 import { Seance } from 'src/app/_models/seance';
-import { ModalController} from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 import { SecondFactorModalComponent } from '../second-factor-modal/second-factor.component';
 
 @Component({
@@ -21,6 +21,7 @@ export class BookingModalComponent implements OnInit {
       .subscribe(
         s => {
           this.seance = s;
+          console.log('s', this.seance);
           this.form = s.bookingForm();
         }
       );

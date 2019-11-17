@@ -13,8 +13,9 @@
     </ion-item>
     <ion-toolbar>
       <ion-buttons slot="end">
-        <ion-button expand="full" color="tertiary" fill="solid" type="submit" [disabled]="form.invalid">
-          <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+        <button type="submit" #submitForm [ngStyle]="{display: 'none'}"></button>
+        <ion-button expand="full" color="tertiary" fill="outline" shape="round" (click)="submitForm.click()" [disabled]="form.invalid">
+          <ion-icon name="checkmark" slot="start"></ion-icon>
           Подтвердить
         </ion-button>
       </ion-buttons>

@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 import { HomeRoutingModule } from './home-routing.module';
 import { AboutComponent } from './children/about/about.component';
 import { StartComponent } from './children/start/start.component';
+import { HelpModalComponent } from './children/help-modal/help-modal.component';
 
 
 @NgModule({
@@ -18,7 +19,11 @@ import { StartComponent } from './children/start/start.component';
   declarations: [
     HomePage,
     StartComponent,
-    AboutComponent
+    AboutComponent,
+    HelpModalComponent
+  ],
+  entryComponents: [
+    HelpModalComponent
   ]
 })
 export class HomePageModule {

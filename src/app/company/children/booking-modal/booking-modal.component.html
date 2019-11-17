@@ -19,8 +19,7 @@
     <ion-item>
       <ion-label position="stacked">Ваш телефон (для отправки уведомлений и подтверждений)</ion-label>
       <div [ngStyle]="{display: 'flex'}">
-        <ion-input type="text" text-center readonly [ngStyle]="{flexBasis: '10%', color: '#999', fontWeight: 600}"> +7
-        </ion-input>
+        <span [ngStyle]="{color: '#999', fontWeight: 600, padding: '8px'}"> +7</span>
         <ion-input formControlName="clientPhone" type="tel" [ngStyle]="{flexBasis: '90%'}" clearInput="true"
           maxlength="10"></ion-input>
       </div>
@@ -38,7 +37,8 @@
     </div>
     <ion-toolbar>
       <ion-buttons slot="end">
-        <ion-button color="tertiary" fill="solid" type="submit" [disabled]="form.invalid">
+        <button type="submit" #submitForm [ngStyle]="{display: 'none'}"></button>
+        <ion-button color="tertiary" fill="outline" shape="round" (click)="submitForm.click()" [disabled]="form.invalid">
           <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
           Подтвердить
         </ion-button>

@@ -3,19 +3,39 @@ ion-content {
         width: 100%;
         height: 100%;
         // background: linear-gradient(45deg, #EECFBA, #C5DDE8);
-        background: linear-gradient(40deg, #bbf6fa 0%, #e6edfc 100%);
+        background: linear-gradient(40deg, #f7f7f7 0%, #efefef 100%);
         display: flex;
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
 
-        .caption {
-            font-family: 'Kurale', serif;
-            font-size: 20vw;
-            line-height: 1;
-            transform: translateY(-100px);
-            color: #81f4fc;
-            text-shadow: 1px 1px 10px rgba(0, 0, 0, .1);
+        .big-logo {
+            width: 100%;
+            height: 100%;
+            background-image: url('/assets/icon/logo.svg');
+            background-size: 50% 50%;
+            background-position: center center;
+            background-repeat: no-repeat;
+            filter: drop-shadow(0 0 28px white);
+        }
+
+        h2,
+        h3 {
+            position: fixed;
+            bottom: 60px;
+            width: 100%;
+            text-align: center;
+            color: #555;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: bold;
+            bottom: 30px;
         }
     }
 
@@ -23,23 +43,37 @@ ion-content {
         width: 100%;
         position: absolute;
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between;
         align-items: center;
         top: 10px;
-        
-        &>span {
-            // width: 15%;
-            padding: 0px 20px;
-            text-align: center;
-            color: var(--ion-color-secondary);
-            cursor: pointer;
-            // text-decoration: underline;
-            transition: .7s;
-            
-            &:hover {
-                color: var(--ion-color-secondary-tint);
-                transform: translate(2px, 2px);
-                font-weight: 500;
+
+        .menu {
+            &>span {
+                padding: 0px 20px;
+                text-align: center;
+                color: var(--ion-color-primary);
+                cursor: pointer;
+                transition: .7s;
+
+                &:hover {
+                    color: var(--ion-color-primary-tint);
+                    transform: translate(2px, 2px);
+                    font-weight: 500;
+                }
+            }
+        }
+
+        .btns {
+            padding: 0 10px;
+
+            ion-button {
+                --border-width: 1px;
+                --padding-start: 10px;
+                --padding-end: 10px;
+                ion-icon {
+                    font-size: 16px;
+                    margin: 0 5px;
+                }
             }
         }
     }
