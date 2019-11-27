@@ -3,7 +3,7 @@ import { DataService } from 'src/app/_services/data.service';
 import { ActivatedRoute } from '@angular/router';
 import { Seance } from 'src/app/_models/seance';
 import { Good } from 'src/app/_models/good';
-import { Observable, of } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { ModalController } from '@ionic/angular';
 import { BookingModalComponent } from '../booking-modal/booking-modal.component';
 
@@ -18,6 +18,7 @@ export class ScheduleComponent implements OnInit {
   dateString: string;
   date: Date;
   seances: Observable<Seance[]> = of([]);
+  state: BehaviorSubject<boolean>;
 
   constructor(private dataService: DataService, private activatedRoute: ActivatedRoute, private modalController: ModalController) { }
 
@@ -31,7 +32,19 @@ export class ScheduleComponent implements OnInit {
           this.good = g;
         }
       );
-    this.seances = this.dataService.getGoodSeances(this.goodId, this.dateString);
+    // this.seances = this.dataService.getGoodSeances(this.goodId, this.dateString);
+    this.state = this.dataService.goodSeancesState;
+    this.state
+      .subscribe(
+        (s: boolean) => {
+          if (s) {
+            this.seances = this.dataService.getGoodSeances(this.goodId, this.dateString);
+            this.dataService.setGoodSeancesState(false);
+            // this.modalController.dismiss();
+          }
+        }
+      );
+    this.dataService.setGoodSeancesState(true);
   }
 
   async booking(seanceId) {

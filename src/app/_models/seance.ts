@@ -10,6 +10,7 @@ export class Seance {
     status: number;
     goodId: number;
     goodName: string;
+    // bookingCode: number;
 
     // tslint:disable-next-line:max-line-length
     constructor(id: string, date: string, time: string, duration: string, price: string, status: string, goodId: string, goodName: string = '') {

@@ -15,6 +15,7 @@ import { Seance } from '../_models/seance';
 export class DataService {
   companies = new BehaviorSubject<Company[]>([]);
   constructor(private http: HttpClient, private router: Router) { }
+  goodSeancesState = new BehaviorSubject<boolean>(false);
 
   get(url, stringParams = ''): Observable<any> {
     return this.http.get(url)
@@ -40,6 +41,10 @@ export class DataService {
           }
         ),
       );
+  }
+
+  setGoodSeancesState(state: boolean) {
+    this.goodSeancesState.next(state);
   }
 
   getCompanies() {
@@ -144,8 +149,8 @@ export class DataService {
       );
   }
 
-  sendCode() {
-    return true;
+  preBooking(formData) {
+    return this.http.post(environment.host + '/client/pre-booking', formData);
   }
 
   booking(formData: any) {

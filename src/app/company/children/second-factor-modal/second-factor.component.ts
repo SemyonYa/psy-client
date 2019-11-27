@@ -23,12 +23,18 @@ export class SecondFactorModalComponent implements OnInit {
   }
 
   submit() {
+    this.bookingFormData.code = this.form.get('code').value;
     this.dataService.booking(this.bookingFormData)
       .subscribe(
         (resp) => {
           if (resp === true) {
             this.modalController.dismiss();
             this.success();
+            this.dataService.setGoodSeancesState(true);
+          } else if (resp === 'code') {
+            this.deny('<p>Неверный код.</p>');
+          } else {
+            this.deny('<p>Повторите попытку позже.</p>');
           }
         }
       );
@@ -44,6 +50,17 @@ export class SecondFactorModalComponent implements OnInit {
         '<p>Имя: ' + this.bookingFormData.clientName + '</p>' +
         '<p>Телефон: ' + this.bookingFormData.clientPhone + '</p>' +
         '<p>E-mail: ' + this.bookingFormData.clientEmail + '</p>',
+      buttons: ['OK'],
+      cssClass: 'alert-success-booking-window'
+    });
+
+    await alert.present();
+  }
+
+  async deny(msg) {
+    const alert = await this.alertController.create({
+      header: 'Что-то пошло не так',
+      message: msg,
       buttons: ['OK'],
       cssClass: 'alert-success-booking-window'
     });
